@@ -1,0 +1,16 @@
+<%= render "shared/header", title: "Hikes" %>
+
+<% if @hikes.any? %>
+  <div class="container list-group list-group-flush px-0">
+    <%= render @hikes %>
+  </div>
+<% else %>
+  <p class="container">No hikes, yet.</p>
+<% end %>
+
+<div class="container d-flex justify-content-between gap-2 mt-4">
+  <% if user_signed_in? %>
+    <%= link_to "Add a hike", new_hike_path,
+      class: "btn btn-primary flex-grow-1 flex-sm-grow-0" %>
+  <% end %>
+</div>

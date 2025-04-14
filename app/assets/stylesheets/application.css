@@ -1,0 +1,23 @@
+/* Constrain all screen sizes to a smaller max width. */
+.container {
+  max-width: 720px;
+}
+
+/* Limit text to two lines. */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* For narrow forms, like authentication. */
+.mw-400 {
+  max-width: 400px !important;
+}
+
+/* Ensure embedded map fills screen. */
+iframe {
+  width: 100%;
+  height: calc(100vh - 120px); /* Magic number for height of navbar. */
+}

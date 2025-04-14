@@ -1,0 +1,37 @@
+<%= render "shared/header", title: @hike.name %>
+
+<div class="container">
+  <% if @hike.image.attached? %>
+    <%= image_tag @hike.image, class: "img-fluid rounded" %>
+  <% end %>
+
+  <% if @hike.image_credit.present? %>
+    <div class="d-flex mt-1">
+      <small class="text-muted ms-auto"><%= @hike.image_credit %></small>
+    </div>
+  <% end %>
+
+  <div class="d-flex align-items-center mt-3">
+    <%= render "likes/like", hike: @hike, like: @like %>
+
+    <div class="d-flex gap-2 ms-auto">
+      <% if @hike.latitude.present? && @hike.longitude.present? %>
+        <%= link_to hike_map_path(@hike), class: "btn btn-outline-primary" do %>
+          <i class="bi bi-globe-americas"></i>
+          Map
+        <% end %>
+      <% end %>
+
+      <% if user_signed_in? && @hike.user == current_user %>
+        <%= link_to edit_hike_path(@hike), class: "btn btn-outline-primary" do %>
+          <i class="bi bi-pencil"></i>
+          Edit
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <p class="text-body-secondary mt-4">
+    <%= @hike.description %>
+  </p>
+</div>

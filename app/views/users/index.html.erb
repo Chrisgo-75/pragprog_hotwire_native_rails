@@ -1,0 +1,9 @@
+<%= render "shared/header", title: "Hikers" %>
+
+<% if @users.any? %>
+  <div class="container list-group list-group-flush px-0">
+    <%= render @users %>
+  </div>
+<% else %>
+  <p class="container">No hikers, yet.</p>
+<% end %>

@@ -1,0 +1,3 @@
+<%= render "shared/header", title: "Map" %>
+
+<%= content_tag :iframe, nil, src: map_embed_url(@hike.latitude, @hike.longitude) %>

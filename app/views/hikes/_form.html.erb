@@ -1,0 +1,71 @@
+<% if hike.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <p class="alert-heading fw-semibold mb-1">
+      Please fix these issues to add your hike:
+    </p>
+    <ul class="mb-0">
+      <% hike.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with model: hike, class: "row g-3 mt-1" do |form| %>
+  <div>
+    <div class="d-flex align-items-baseline justify-content-between">
+      <%= form.label :name, class: "form-label" %>
+
+      <% if hike.persisted? %>
+        <%= link_to hike,
+          class: "btn btn-sm btn-link text-danger text-decoration-none py-0",
+          data: {
+            turbo_confirm: "Are you sure?",
+            turbo_method: "delete"
+          } do %>
+          <i class="bi bi-trash"></i>
+          Delete hike
+        <% end %>
+      <% end %>
+    </div>
+
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div>
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control", rows: 8 %>
+  </div>
+
+  <div>
+    <%= form.label :image, class: "form-label" %>
+
+    <% if hike.image.attached? %>
+      <%= image_tag hike.image, class: "img-thumbnail" %>
+      <%= form.hidden_field :image, value: hike.image.signed_id %>
+    <% end %>
+
+    <%= form.file_field :image,
+      accept: "image/jpg,image/jpeg,image/png",
+      class: "form-control mt-2" %>
+  </div>
+
+  <div>
+    <%= form.label :coordinates, class: "form-label" %>
+
+    <div class="row">
+      <div class="col">
+        <%= form.number_field :latitude, class: "form-control",
+          min: -90, max: 90, step: 0.000001 %>
+      </div>
+      <div class="col">
+        <%= form.number_field :longitude, class: "form-control",
+          min: -180, max: 180, step: 0.000001 %>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-grid d-sm-flex justify-content-sm-end mt-4">
+    <%= form.submit "Save", class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,35 @@
+<nav class="navbar bg-body-tertiary">
+  <div class="container">
+    <%= link_to "Hiking journal", root_path, class: "navbar-brand" %>
+
+    <button class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbar"
+            aria-controls="navbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse pb-2" id="navbar">
+      <ul class="navbar-nav me-auto pb-">
+        <li class="nav-item">
+          <%= link_to "Hikes", hikes_path, class: "nav-link" %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "Hikers", users_path, class: "nav-link" %>
+        </li>
+      </ul>
+
+      <hr class="border-1 border-secondary border-opacity-50">
+      <% if user_signed_in? %>
+        <%= link_to "Sign out", session_path, class: "nav-link",
+          "data-turbo-method": "delete" %>
+      <% else %>
+        <%= link_to "Sign in", new_session_path, class: "nav-link" %>
+      <% end %>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,38 @@
+# compose project name - this is needed in order to successfully run
+#                        eops_staging and eops_prod on the same server.
+#                        Project name, distinguishes staging vs production
+#                        services => app.
+name: pragprog_hotwire_native_dev
+
+services:
+  app:
+    # build => tells Compose where to find the Dockerfile it should use
+    #          to build our image. The path we specify is relative to
+    #          the docker-compose.yml file.
+    #          So builds an image for any service with a 'build' directive.
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: pragprog_hotwire_native_dev:latest
+    container_name: pragprog_hotwire_native_dev
+    environment:
+      # Represent Puma server
+      PIDFILE: /tmp/pids/server.pid
+      # Represent Passenger
+      #PIDFILE: /tmp/pids/passenger.3000.pid
+      RAILS_ENV: development
+      TZ: "America/Chicago"
+    # A volume is set up that mounts the current path of the host machine to
+    # the folder /usr/src/app in the container.
+    # The volume is essential so that when we generate the Rails application in
+    # the container, the template files will persist in the host filesystem.
+    volumes:
+      - .:/usr/src/app
+    env_file:
+      - app.env
+    tmpfs:
+      # tmpfs mount  is temporary and persists in the host memory.
+      # When container stops, the tmpfs mount is removed, and all files in it will be gone.
+      - /tmp/pids/
+    ports:
+      - "3030:3000"

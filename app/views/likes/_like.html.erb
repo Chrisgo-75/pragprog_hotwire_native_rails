@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+  <% if like.present? %>
+    <%= button_to hike_like_path(hike, like), method: :delete, class: "btn btn-link icon-link link-danger link-underline-opacity-0 d-flex align-items-baseline gap-2 ps-1" do %>
+      <i class="bi bi-heart-fill"></i>
+      <span class="text-secondary ms-1"><%= pluralize(hike.likes_count, "like") %></span>
+    <% end %>
+  <% else %>
+    <%= button_to hike_likes_path(hike), class: "btn btn-link icon-link link-secondary link-underline-opacity-0 d-flex align-items-baseline gap-2 ps-1" do %>
+      <i class="bi bi-heart"></i>
+      <span class="text-secondary ms-1"><%= pluralize(hike.likes_count, "like") %></span>
+    <% end %>
+  <% end %>
+<% else %>
+  <span class="text-secondary ms-1"><%= pluralize(hike.likes_count, "like") %></span>
+<% end %>
