@@ -43,13 +43,13 @@ RUN mkdir /usr/src/cache
 WORKDIR /usr/src/cache
 
 # Install the application's dependencies into the node_modules's cache directory.
-#COPY package.json ./
-#COPY package-lock.json ./
-#RUN npm install
-#RUN echo "NPM Version:" && npm --version
+COPY package.json ./
+COPY package-lock.json ./
+RUN npm install
+RUN echo "NPM Version:" && npm --version
 
 # Install Yarn globally
-#RUN npm install --global yarn
+RUN npm install --global yarn
 
 # Make this the current working directory for the image. So we can execute Rails \
 # cmds against image.

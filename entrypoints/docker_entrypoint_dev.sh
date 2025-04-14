@@ -11,7 +11,7 @@ set -e
 # --turn on bash's job control
 set -m
 
-cp -r /usr/src/cache/node_modules/. /usr/src/app/node_modules/
+#cp -r /usr/src/cache/node_modules/. /usr/src/app/node_modules/
 
 # Compile Rails Assets at runtime.
 RAILS_ENV=development bundle exec rake assets:precompile
