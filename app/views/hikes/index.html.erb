@@ -12,5 +12,16 @@
   <% if user_signed_in? %>
     <%= link_to "Add a hike", new_hike_path,
       class: "btn btn-primary flex-grow-1 flex-sm-grow-0" %>
+    <%= link_to "Sign out", session_path,
+        class: "btn btn-outline-danger d-none d-hotwire-native-block",
+        data: {
+          turbo_method: "delete",
+          turbo_confirm: "Sign out?"
+        } %>
+  <% else %>
+    <div class="flex-grow-1">
+      <%= link_to "Sign in", new_session_path,
+        class: "btn btn-outline-primary d-none d-hotwire-native-block" %>
+    </div>
   <% end %>
 </div>

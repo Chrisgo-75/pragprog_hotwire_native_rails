@@ -1,0 +1,176 @@
+# PragProg ebook - Hotwire Native For Rails Devs
+
+## Index
+
+    General Notes, Sources, Etc.
+    
+    Setup Mac Laptop
+    
+    Build a Hotwire Native iOS App
+    
+    Get the iOS App Running
+    
+    .
+    
+    Rails Application Common Commands
+    
+---
+
+## General Notes, Sources, Etc.
+
+1) Author of Book's email address: joe@masilotti.com
+    Discord Channel: https://masilotti.com/discord
+
+
+2) Code: https://media.pragprog.com/titles/jmnative/code/jmnative-code.zip
+
+3) 
+
+4) 
+
+---
+
+
+## Setup Mac Laptop
+
+1) Install and Setup Eduroam.
+
+1) Update Apple ID Password.   https://account.apple.com/
+
+1) Install Docker Desktop
+
+2) Install Xcode
+
+2) Download PragProg book (pdf).
+
+2) Download Rails app code to Mac laptop.
+
+3) Install Android Studio Meerkat
+
+4) Set up application
+
+    a) Create folder: /docker/uw_apps/pragprog_hotwire_native/rails/ ... copy in ch01_00
+    b) Create folder: /docker/uw_apps/pragprog_hotwire_native/ios/
+    c) 
+
+---
+
+## Build a Hotwire Native iOS App
+
+1) Create new Xcode Project
+
+    a) Create New Project > Select iOS at the top and then App from the Application section. Click Next.
+    
+    b) 
+        Product Name: HikingJournal
+        Team: None
+        Organization Identifier: 
+            cals.wisc.edu
+            OR
+            com.ccarndt
+        Bundle Identifier: prefilled in by what you have entered in other fields.
+        Interface: Storyboard
+        Language: Swift
+        Testing System: None
+        Storage: None
+    
+    c) Choose location to save: /docker/uw_apps/pragprog_hotwire_native/ios/
+
+    d) Click create.
+
+    e) Ensure a simulator is selected as the run destination at the top of Xcode to the right of HikingJournal. If your iPhone plugged in or nearby you might see that instead.
+
+    f) Click Product > Run
+
+2) Add the Hotwire Native Package by
+
+    a) click File > Add Package Dependencies ... in Xcode.
+    
+    b) Enter the following hotwire-native-ios package URL in the search box at the upper right.
+        https://github.com/hotwired/hotwire-native-ios
+
+    c) Then click Add Package.
+
+    d) On the next screen, make sure HikingJournal is selected under Add to Target.
+    
+    e) Then click Add Package again to add it to the project.
+
+---
+
+## Get the iOS App Running
+
+...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+
+# Rails Application Common Commands
+
+## Rebuild Docker Image and Start Docker Containers
+    $ docker ps -a
+    $ docker container stop gorails_learn_hotwire_dev   ----\
+                                                   $ docker compose down
+    $ docker container rm gorails_learn_hotwire_dev     ----/
+    $ docker compose build --no-cache --progress=plain
+    $ docker compose up -d
+	$ docker compose down
+
+## Access Container
+    $ docker exec -it gorails_learn_hotwire_dev bash
+
+## To Run RSpec Tests
+
+    # Run RSpec Tests
+    $ docker compose -f docker-compose.test.yml build --no-cache --progress=plain
+    $ docker compose -f docker-compose.test.yml up -d
+    $ docker exec -it genetics_independent_study_test bash
+    # rspec spec/
+    # exit
+    $ docker compose -f docker-compose.test.yml down
+
+## Will need to apply directory and file permissions
+    $ sudo chown -R $USER:$USER .
+
+
+
+_______________________________________________________________________________________________________________________________________
+
+Don't put anything below this line that you want to keep!
+
+
+
+
+
+
+
+.
