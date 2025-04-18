@@ -24,5 +24,8 @@
 # Ignore key for decrypting credentials.
 /config/master.key
 
+# Ignore RubyMine Files
+.idea/
+
 app.env
 
