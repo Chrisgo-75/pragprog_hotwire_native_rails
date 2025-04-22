@@ -37,8 +37,16 @@ class ConfigurationsController < ApplicationController
             "/edit$"
           ],
           properties: {
-            context: "model",
+            context: "modal",
             pull_to_refresh_enabled: false
+          }
+        },
+        {
+          patterns: [
+            "/hikes/[0-9]+/map"
+          ],
+          properties: {
+            view_controller: "map"
           }
         }
       ]
