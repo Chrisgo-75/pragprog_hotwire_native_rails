@@ -11,7 +11,7 @@ class ConfigurationsController < ApplicationController
             "/edit$"
           ],
           properties: {
-            context: "model"
+            context: "modal"
           }
         }
       ]
@@ -47,6 +47,15 @@ class ConfigurationsController < ApplicationController
           ],
           properties: {
             view_controller: "map"
+          }
+        },
+        {
+          patterns: [
+            "/hikes/[0-9]+/map"
+          ],
+          properties: {
+            uri: "hotwire://fragment/map",
+            title: "Map"
           }
         }
       ]
