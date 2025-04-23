@@ -11,7 +11,11 @@
 <div class="container d-flex justify-content-between gap-2 mt-4">
   <% if user_signed_in? %>
     <%= link_to "Add a hike", new_hike_path,
-      class: "btn btn-primary flex-grow-1 flex-sm-grow-0" %>
+      class: "btn btn-primary flex-grow-1 flex-sm-grow-0", data: {
+        controller: "bridge--button",
+        bridge_title: "Add",
+        bridge_image_name: "plus"
+      } %>
     <%= link_to "Sign out", session_path,
         class: "btn btn-outline-danger d-none d-hotwire-native-block",
         data: {

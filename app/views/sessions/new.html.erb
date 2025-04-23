@@ -22,7 +22,10 @@
     </div>
 
     <div>
-      <%= form.submit "Sign in", class: "btn btn-primary w-100" %>
+      <%= form.submit "Sign in", class: "btn btn-primary w-100",
+                      data: { controller: "bridge--button",
+                              bridge_title: "Sign in"
+                      } %>
     </div>
   <% end %>
 </div>
