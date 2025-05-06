@@ -7,6 +7,8 @@
 # Visit https://pragprog.com/titles/jmnative for more book information.
 #---
 Rails.application.routes.draw do
+  root "hikes#index"
+
   resource :session, only: %i[new create destroy]
 
   resources :hikes do
@@ -23,5 +25,17 @@ Rails.application.routes.draw do
     get :android_v1, on: :collection
   end
 
-  root "hikes#index"
+  namespace :hotwire do
+    namespace :android do
+      resource :configurations, only: [] do
+        get :v1
+      end
+    end # END namespace :android do
+    namespace :ios do
+      namespace :configurations, only: [] do
+        get :v1
+      end
+    end # END namespace :ios do
+  end # END namespace :hotwire do
+
 end
