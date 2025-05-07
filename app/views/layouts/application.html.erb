@@ -18,7 +18,16 @@
     <%= turbo_refreshes_with method: :morph, scroll: :preserve %>
   </head>
 
-  <body>
+  <body class="container" data-controller="bridge--overflow-menu" data-bridge-title="Menu">
+
+    <nav class="native-hidden">
+      <ul>
+        <li><%= link_to "No Where", "#" %></li>
+        <li><%= link_to "Hikes", hikes_path, data: {bridge__overflow_menu_target: 'item', bridge_title: "Hikes", ios_icon: "figure.hiking"} %></li>
+        <li><%= link_to "Hikers", users_path, data: {bridge__overflow_menu_target: 'item', bridge_title: "Hikers", ios_icon: "person.3"} %></li>
+      </ul>
+    </nav>
+
     <%= render "shared/navbar" %>
     <main class="mb-5">
       <%= render "shared/flash" %>

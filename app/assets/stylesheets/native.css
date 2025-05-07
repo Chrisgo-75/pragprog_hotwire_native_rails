@@ -2,6 +2,10 @@
     display: none !important;
 }
 
+.native-hidden {
+    display: none;
+}
+
 .d-hotwire-native-block {
     display: block !important;
 }
