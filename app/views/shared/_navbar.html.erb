@@ -1,4 +1,4 @@
-<nav class="navbar d-hotwire-native-none bg-body-tertiary">
+<nav class="navbar bg-body-tertiary">
   <div class="container">
     <%= link_to "Hiking journal", root_path, class: "navbar-brand" %>
 
@@ -15,11 +15,17 @@
     <div class="collapse navbar-collapse pb-2" id="navbar">
       <ul class="navbar-nav me-auto pb-">
         <li class="nav-item">
-          <%= link_to "Hikes", hikes_path, class: "nav-link" %>
+          <%= link_to "Hikes",
+                      hikes_path,
+                      class: "nav-link",
+                      data: {bridge__overflow_menu_target: 'item', bridge_title: "Hikes", ios_icon: "figure.hiking"} %>
         </li>
 
         <li class="nav-item">
-          <%= link_to "Hikers", users_path, class: "nav-link" %>
+          <%= link_to "Hikers",
+                      users_path,
+                      class: "nav-link",
+                      data: {bridge__overflow_menu_target: 'item', bridge_title: "Hikers", ios_icon: "person.3"} %>
         </li>
       </ul>
 
